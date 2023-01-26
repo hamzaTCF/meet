@@ -1,5 +1,9 @@
 # **Feature 1: Filter events by city**
 
+As a user<br>
+I should be able to filter events by city<br>
+So that I can see the list of events that take place in that city<br>
+
 > ### Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
 >
 > - `Given` user hasn’t searched for any city
@@ -22,6 +26,10 @@
 &nbsp;
 
 ## **Feature 2: Show/Hide an Event’s Details**
+
+As a user<br>
+I should be able to toggle event's details<br>
+So that I can only see the details I am interested in<br>
 
 > Scenario 1: An event element is collapsed by default
 >
@@ -48,6 +56,10 @@
 
 ## **Feature 3: Specify Number of Events**
 
+As a user<br>
+I should be able to determine how many events to list<br>
+So that I can see the preferred amount of events items at any time<br>
+
 > Scenario 1: When user hasn’t specified a number, 32 is the default number
 >
 > - `Given` the user have just opened the app
@@ -66,6 +78,10 @@
 
 ## **Feature 4: Use the App when Offline**
 
+As a user<br>
+I should be view events in offline mode<br>
+So that I can still view events when I have no internet connection<br>
+
 > Scenario 1: Show cached data when there’s no internet connection
 >
 > - `Given` there is no internet connection
@@ -82,6 +98,10 @@
 &nbsp;
 
 ## **Feature 5: Data Visualization**
+
+As a user<br>
+I should be able to see a chart visualizing number of events in each city<br>
+So that I can quickly identify what city that has the most events <br>
 
 > Scenario 1: Show a chart with the number of upcoming events in each city
 >
