@@ -1,4 +1,20 @@
-# **Feature 1: Filter events by city**
+# **Description**
+
+This app will use serverless functions to get an authorization code from the user's Google account.
+
+This authorization code will then be sent to another serverless function which will try to get an access token out of the authorization code.
+
+Once the access token is obtained, it will be utilized by a third serverless function that will fetch events from Google Calendar API, the function will use the access token as a key to authenticate the user's request for fetching the events.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+# **Key Features**
+
+## **Feature 1: Filter events by city**
 
 As a user<br>
 I should be able to filter events by city<br>
