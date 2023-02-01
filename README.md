@@ -116,7 +116,7 @@ So that I can still view events when I have no internet connection<br>
 ## **Feature 5: Data Visualization**
 
 As a user<br>
-I should be able to see a chart visualizing number of events in each city<br>
+I should be able to see a chart visualizing number of events in each city <br>
 So that I can quickly identify what city that has the most events <br>
 
 > Scenario 1: Show a chart with the number of upcoming events in each city
