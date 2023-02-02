@@ -52,12 +52,6 @@ module.exports.getAuthURL = async () => {
 
   return {
     statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-    },
     body: JSON.stringify({
       authUrl
     }),
@@ -123,67 +117,13 @@ module.exports.getCalendarEvents = (event) => {
     .then((results) => {
       return {
         statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Headers": "Content-Type",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
         body: JSON.stringify({ events: results.data.items }),
       };
     })
     .catch((error) => {
       return {
         statusCode: 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Headers": "Content-Type",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
         body: JSON.stringify(error),
       };
     });
-};
-
-
-const nodemailer = require('nodemailer');
-const aws = require('aws-sdk');
-
-module.exports.sendEmail = async (event, context) => {
-
-  console.log(context.memoryLimitInMB);
-  // obtain and parse request body data
-  const requestData = JSON.parse(event.body);
-
-  // prepare the email to send
-  const mailOptions = {
-    sender: requestData.sender,
-    to: 'contact@example.com',
-    subject: requestData.emailSubject,
-    text: requestData.emailTextBody,
-  };
-
-  // create a nodemailer transporter that uses Amazon's Simple Email Services (SES)
-  const ses = new aws.SES();
-  const transporter = nodemailer.createTransport({
-    SES: ses
-  });
-
-  // send the email
-  transporter.sendMail(mailOptions)
-    .then(result => {
-      console.log(result);
-      return {
-        statusCode: 200,
-        body: "Email sent successfully",
-      };
-    })
-    .catch(error => {
-      console.error(error);
-      return {
-        statusCode: 500,
-        body: "Failed to send email",
-      };
-    })
 };
