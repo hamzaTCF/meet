@@ -1,6 +1,6 @@
 function EventList() {
   return (
-    <div>EventList Component</div>
+    <ul id="event-list"></ul>
   );
 }
 
