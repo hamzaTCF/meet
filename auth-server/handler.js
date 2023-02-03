@@ -20,8 +20,7 @@ const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
 const redirect_uris = [
-  "https://hamzaTCF.github.io/meet/",
-  "http://localhost:3000",
+  "https://hamzaTCF.github.io/meet/"
 ];
 
 const oAuth2Client = new google.auth.OAuth2(
@@ -59,6 +58,7 @@ module.exports.getAuthURL = async () => {
 };
 
 module.exports.getAccessToken = async (event) => {
+
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
@@ -67,34 +67,36 @@ module.exports.getAccessToken = async (event) => {
      * The callback in this case is an arrow function with the results as paramenters: 'err' and 'token.'
      */
 
-    oAuth2Client.getToken(code, (err, token) => {
-      if (err) {
-        return reject(err);
+    oAuth2Client.getToken(code, (error, response) => {
+      if (error) {
+        return reject(error);
       }
-      return resolve(token);
+      return resolve(response);
     });
   })
-    .then((token) => {
+    .then((results) => {
       //Respond with OAtuth token
       return {
         statusCode: 200,
-        body: JSON.stringify(token),
+        body: JSON.stringify(results),
       };
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log(error);
       return {
         statusCode: 500,
-        body: JSON.stringify(err),
+        body: JSON.stringify(error),
       };
     });
 };
 
-module.exports.getCalendarEvents = (event) => {
+module.exports.getCalendarEvents = async (event) => {
+
   const access_token = decodeURIComponent(
     `${event.pathParameters.access_token}`
   );
   oAuth2Client.setCredentials({ access_token });
+
 
   return new Promise((resolve, reject) => {
     calendar.events.list(
