@@ -1,6 +1,14 @@
-function EventList() {
+// src/components/EventList.js
+
+import Event from "./Event";
+
+function EventList({ events }) {
   return (
-    <ul id="event-list"></ul>
+    <ul id="event-list">
+      {events ?
+        events.map(event => <Event key={event.id} event={event} />) :
+        null}
+    </ul>
   );
 }
 
