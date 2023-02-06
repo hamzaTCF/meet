@@ -2,7 +2,7 @@
 
 import Event from "./Event";
 
-function EventList({ events }) {
+const EventList = ({ events }) => {
   return (
     <ul id="event-list">
       {events ?

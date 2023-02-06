@@ -1,6 +1,6 @@
 // src/components/Event.js
 
-function Event() {
+const Event = () => {
   return (
     <li></li>
   )
