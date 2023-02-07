@@ -1,14 +1,17 @@
 // src/components/CitySearch.js
 
+import { useState } from "react";
+
 const CitySearch = () => {
+  const [showSuggestions, setShowSuggestions] = useState(false);
   return (
     <div id="city-search">
       <input
         type="text"
         className="city"
+        onFocus={() => setShowSuggestions(true)}
       />
-      <ul className="suggestions">
-      </ul>
+      {showSuggestions ? <ul className="suggestions"></ul> : null}
     </div>
   )
 }
