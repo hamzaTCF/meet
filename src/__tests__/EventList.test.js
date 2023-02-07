@@ -10,10 +10,10 @@ describe('<EventList /> component', () => {
   })
 
   test('has an element with "list" role', () => {
-    expect(EventListComponent.getByRole("list")).toBeInTheDocument();
+    expect(EventListComponent.queryByRole("list")).toBeInTheDocument();
   });
 
   test('renders correct number of events', () => {
-    expect(EventListComponent.getAllByRole("listitem")).toHaveLength(4);
+    expect(EventListComponent.queryAllByRole("listitem")).toHaveLength(4);
   });
 });
