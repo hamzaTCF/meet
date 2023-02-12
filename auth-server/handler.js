@@ -51,6 +51,10 @@ module.exports.getAuthURL = async () => {
 
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+    },
     body: JSON.stringify({
       authUrl
     }),
@@ -78,6 +82,10 @@ module.exports.getAccessToken = async (event) => {
       //Respond with OAtuth token
       return {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify(results),
       };
     })
@@ -119,6 +127,10 @@ module.exports.getCalendarEvents = async (event) => {
     .then((results) => {
       return {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
         body: JSON.stringify({ events: results.data.items }),
       };
     })
