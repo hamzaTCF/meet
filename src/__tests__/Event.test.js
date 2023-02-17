@@ -1,20 +1,22 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { getEvents } from '../api';
 import Event from '../components/Event';
-import mockData from '../mock-data';
 
 describe('<Event /> component', () => {
   let EventComponent;
-  beforeEach(() => {
-    EventComponent = render(<Event event={mockData[0]} />)
+  let allEvents;
+  beforeEach(async () => {
+    allEvents = await getEvents();
+    EventComponent = render(<Event event={allEvents[0]} />)
   });
 
   test('renders event Title', () => {
-    expect(EventComponent.queryByText(mockData[0].summary)).toBeInTheDocument();
+    expect(EventComponent.queryByText(allEvents[0].summary)).toBeInTheDocument();
   });
 
   test('renders event location', () => {
-    expect(EventComponent.queryByText(mockData[0].location)).toBeInTheDocument();
+    expect(EventComponent.queryByText(allEvents[0].location)).toBeInTheDocument();
   });
 
   test('renders event showDetails button', () => {
