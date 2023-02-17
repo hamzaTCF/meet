@@ -1,6 +1,6 @@
 // src/__tests__/CitySearch.js
 
-import { render, rerender } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
 import mockData from '../mock-data';
