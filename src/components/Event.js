@@ -7,8 +7,9 @@ const Event = ({ event }) => {
   return (
     <li>
       <h2>{event && event.summary}</h2>
+      <h3>{event && event.location}</h3>
       {showDetails ?
-        <p className="details">{event && event.summary}</p> :
+        <p className="details">{event && event.description}</p> :
         null
       }
       {showDetails ?

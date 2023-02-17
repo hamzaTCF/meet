@@ -13,6 +13,10 @@ describe('<Event /> component', () => {
     expect(EventComponent.queryByText(mockData[0].summary)).toBeInTheDocument();
   });
 
+  test('renders event location', () => {
+    expect(EventComponent.queryByText(mockData[0].location)).toBeInTheDocument();
+  });
+
   test('renders event showDetails button', () => {
     expect(EventComponent.queryByText('show details')).toBeInTheDocument();
   });
