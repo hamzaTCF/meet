@@ -32,9 +32,9 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
       <input
         type="text"
         className="city"
+        placeholder="Search for a city"
         value={query}
         onFocus={() => setShowSuggestions(true)}
-        // onBlur={() => setShowSuggestions(false)}
         onChange={handleInputChanged}
       />
       {showSuggestions ?
