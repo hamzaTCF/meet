@@ -10,8 +10,8 @@ import mockData from './mock-data';
  * The Set will remove all duplicates from the array.
  */
 export const extractLocations = (events) => {
-  var extractLocations = events.map((event) => event.location);
-  var locations = [...new Set(extractLocations)];
+  const extractedLocations = events.map((event) => event.location);
+  const locations = [...new Set(extractedLocations)];
   return locations;
 };
 
@@ -27,7 +27,6 @@ export const getEvents = async () => {
     return mockData;
   }
 
-
   const token = await getAccessToken();
 
   if (token) {
@@ -35,13 +34,13 @@ export const getEvents = async () => {
     const url = 'https://3qvsrmj50h.execute-api.us-east-1.amazonaws.com/dev/api/get-events' + '/' + token;
     const response = await fetch(url);
     const result = await response.json();
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem("lastEvents", JSON.stringify(result.data.events));
+    if (result) {
+      const locations = extractLocations(result.events);
+      localStorage.setItem("lastEvents", JSON.stringify(result.events));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
     NProgress.done();
-    return result.data.events;
+    return result.events;
   }
 };
 
@@ -59,7 +58,7 @@ export const getAccessToken = async () => {
         "https://3qvsrmj50h.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
       );
       const result = await response.json();
-      const { authUrl } = result.data;
+      const { authUrl } = result;
       return (window.location.href = authUrl);
     }
     return code && getToken(code);
@@ -77,7 +76,7 @@ const checkToken = async (accessToken) => {
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
-    var newurl =
+    let newurl =
       window.location.protocol +
       "//" +
       window.location.host +
