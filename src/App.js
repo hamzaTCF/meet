@@ -3,9 +3,11 @@
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
-import './App.css';
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
+
+import './nprogress.css';
+import './App.css';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
