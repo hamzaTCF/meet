@@ -75,8 +75,9 @@ const checkToken = async (accessToken) => {
 };
 
 const removeQuery = () => {
+  let newurl;
   if (window.history.pushState && window.location.pathname) {
-    let newurl =
+    newurl =
       window.location.protocol +
       "//" +
       window.location.host +
