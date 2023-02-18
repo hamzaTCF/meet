@@ -17,6 +17,7 @@ const App = () => {
 
   const initApp = async () => {
     const allEvents = await getEvents();
+    setEvents(allEvents);
     setAllLocations(extractLocations(allEvents));
   }
 
@@ -24,7 +25,7 @@ const App = () => {
     <div className="App">
       <CitySearch allLocations={allLocations} />
       <NumberOfEvents />
-      <EventList />
+      <EventList events={events} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
+import { render, waitFor, within } from '@testing-library/react';
+import { getEvents } from '../api';
 import EventList from '../components/EventList';
-import mockData from '../mock-data';
+import App from "../App";
 
 describe('<EventList /> component', () => {
   let EventListComponent;
@@ -12,10 +13,28 @@ describe('<EventList /> component', () => {
     expect(EventListComponent.queryByRole("list")).toBeInTheDocument();
   });
 
-  test('renders correct number of events', () => {
-    EventListComponent.rerender(<EventList events={mockData} />);
-    expect(EventListComponent.getAllByRole("listitem")).toHaveLength(mockData.length);
+  test('renders correct number of events', async () => {
+    const allEvents = await getEvents();
+    EventListComponent.rerender(<EventList events={allEvents} />);
+    expect(EventListComponent.getAllByRole("listitem")).toHaveLength(allEvents.length);
   });
+});
 
+function wait(milliseconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, milliseconds);
+  });
+}
 
+describe('<EventList /> integration', () => {
+  test('renders event lists when the app is mounted and rendered', async () => {
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+    const EventListDOM = AppDOM.querySelector('#event-list');
+    const allEvents = await getEvents();
+    await waitFor(() => {
+      const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+      expect(EventListItems.length).toBe(allEvents.length);
+    });
+  });
 });
