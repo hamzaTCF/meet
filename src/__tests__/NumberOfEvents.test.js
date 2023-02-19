@@ -1,15 +1,13 @@
 // src/__tests__/CitySearch.js
 
-import { render, rerender } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
-import mockData from '../mock-data';
-import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
   let NumberOfEventsComponent;
   beforeEach(() => {
-    NumberOfEventsComponent = render(<NumberOfEvents />);
+    NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />);
   });
 
   test('renders number of events text input', () => {
