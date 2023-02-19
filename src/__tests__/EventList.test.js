@@ -20,12 +20,6 @@ describe('<EventList /> component', () => {
   });
 });
 
-function wait(milliseconds) {
-  return new Promise(resolve => {
-    setTimeout(resolve, milliseconds);
-  });
-}
-
 describe('<EventList /> integration', () => {
   test('renders event lists when the app is mounted and rendered', async () => {
     const AppComponent = render(<App />);
