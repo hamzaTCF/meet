@@ -6,19 +6,17 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
 
-import './nprogress.css';
 import './App.css';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
+  const [currentNOE, setCurrentNOE] = useState(32);
   const [events, setEvents] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
-  const [currentNOE, setCurrentNOE] = useState(32);
-
 
   useEffect(() => {
     fetchData();
-  }, [currentCity, currentNOE]);
+  }, [currentCity]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -32,7 +30,7 @@ const App = () => {
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+      <NumberOfEvents />
       <EventList events={events} />
     </div>
   );

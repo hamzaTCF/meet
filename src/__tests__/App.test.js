@@ -2,14 +2,14 @@
 
 import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from '../App';
 import { getEvents } from '../api';
+import App from '../App';
 
 describe('<App /> component', () => {
   let AppDOM;
   beforeEach(() => {
     AppDOM = render(<App />).container.firstChild;
-  });
+  })
 
   test('renders list of events', () => {
     expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
@@ -46,21 +46,11 @@ describe('<App /> Integration', () => {
     );
 
     expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+
+    allRenderedEventItems.forEach(event => {
+      expect(event.textContent).toContain("Berlin, Germany");
+    });
   });
+});
 
-  test('renders a list of events matching the number of events set by user', async () => {
-    const user = userEvent.setup();
-    const AppComponent = render(<App />);
-    const AppDOM = AppComponent.container.firstChild;
 
-    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
-    const NumberOfEventsInput = within(NumberOfEventsDOM).queryByRole('textbox');
-
-    await user.type(NumberOfEventsInput, "{Backspace}{Backspace}1");
-
-    const EventListDOM = AppDOM.querySelector('#event-list');
-    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-
-    expect(allRenderedEventItems.length).toBe(1);
-  });
-})

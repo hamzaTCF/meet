@@ -9,7 +9,8 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
   useEffect(() => {
     setSuggestions(allLocations);
-  }, [JSON.stringify(allLocations)]);
+  }, [`${allLocations}`]);
+
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
@@ -40,7 +41,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
       />
       {showSuggestions ?
         <ul className="suggestions">
-          {suggestions && suggestions.map((suggestion) => {
+          {suggestions.map((suggestion) => {
             return <li onClick={handlItemClicked} key={suggestion}>{suggestion}</li>
           })}
           <li key='See all cities' onClick={handlItemClicked}>
@@ -49,7 +50,10 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         </ul>
         : null
       }
+
+
     </div>
+
   )
 }
 
