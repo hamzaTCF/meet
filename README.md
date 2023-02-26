@@ -82,7 +82,7 @@ So that I can see the preferred amount of events items at any time<br>
 > - `Given` the user have just opened the app
 > - `And` the user Haven't changed the number of events
 > - `When` the user views the events list
-> - `Then` the Number Of Events input field should display "32" by default
+> - `Then` the Number Of Events input field should display 32 by default
 > - `And` the number of events in the list should be 32 by default
 
 > Scenario 2: User can change the number of events they want to see
