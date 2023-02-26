@@ -57,17 +57,17 @@ So that I can only see the details I am interested in<br>
 > Scenario 2: User can expand an event to see its details
 >
 > - `Given` the user have just opened the app
-> - `When` the user clicks on the "Show Details" button of one of the events
+> - `When` the user clicks on the Details button of one of the events
 > - `Then` the event's details should be shown
-> - `And` the event's "Show Details" button title will be adjusted to "Hide Details"
+> - `And` the event's Details button title will be adjusted to (hide details)
 
 > Scenario 3: User can collapse an event to hide its details.
 >
 > - `Given` the event's details are shown
-> - `And` the event's "Hide Details" button is shown
-> - `When` the user clicks on "Hide Details" button of that event.
+> - `And` the event's Details button title is (hide details)
+> - `When` the user clicks on Details button of that event.
 > - `Then` the event's details should be hidden.
-> - `And` the event's "Hide Details" button title will be adjusted to "Show Details"
+> - `And` the event's Details button title will be adjusted to (show details)
 
 &nbsp;
 

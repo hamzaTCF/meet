@@ -13,10 +13,9 @@ const Event = ({ event }) => {
         <p className="details">{event && event.description}</p> :
         null
       }
-      {showDetails ?
-        <button className="details-btn" onClick={() => setShowDetails(false)}>hide details</button> :
-        <button className="details-btn" onClick={() => setShowDetails(true)}>show details</button>
-      }
+      <button className="details-btn" onClick={() => {
+        showDetails ? setShowDetails(false) : setShowDetails(true)
+      }}>{showDetails ? "hide details" : "show details"}</button>
     </li>
   )
 }
