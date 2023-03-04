@@ -27,22 +27,28 @@ export const getEvents = async () => {
     return mockData;
   }
 
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return events ? JSON.parse(events) : [];;
+  }
+
   const token = await getAccessToken();
 
   if (token) {
     removeQuery();
-    const url = 'https://3qvsrmj50h.execute-api.us-east-1.amazonaws.com/dev/api/get-events' + '/' + token;
+    const url = "https://3qvsrmj50h.execute-api.us-east-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
-      const locations = extractLocations(result.events);
+      NProgress.done();
       localStorage.setItem("lastEvents", JSON.stringify(result.events));
-      localStorage.setItem("locations", JSON.stringify(locations));
-    }
-    NProgress.done();
-    return result.events;
+      return result.events;
+    } else return null;
   }
-};
+}
+
+
 
 
 export const getAccessToken = async () => {

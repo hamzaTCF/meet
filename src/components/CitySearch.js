@@ -40,9 +40,9 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
 
   return (
     <div id="city-search">
-      <label htmlFor="city-input">Choose your nearest city</label>
+      <label htmlFor="city-inputt">Choose your nearest city</label>
       <input
-        id="city-input"
+        id="city-inputt"
         type="text"
         className="city"
         placeholder="Search for a city"
