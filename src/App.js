@@ -3,7 +3,6 @@
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
-import WelcomeScreen from './components/WelcomeScreen';
 import { InfoAlert, WarningAlert, ErrorAlert } from './components/Alert';
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
@@ -21,6 +20,11 @@ const App = () => {
   const [errorAlert, setErrorAlert] = useState("");
 
   useEffect(() => {
+    if (navigator.onLine) {
+      setWarningAlert("")
+    } else {
+      setWarningAlert("You are currently offline! Your query has been performed on cached events data")
+    }
     fetchData();
   }, [currentCity, currentNOE]);
 
