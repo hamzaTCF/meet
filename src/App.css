@@ -41,6 +41,10 @@ input[type="number"] {
   position: relative;
 }
 
+#city-search label {
+  margin-bottom: 30px;
+}
+
 .suggestions {
   width: 250px;
   position: absolute;
@@ -89,6 +93,7 @@ input[type="number"] {
 
 .alerts-container {
   position: fixed;
+  top: 0;
   left: 20px;
   width: 250px;
   z-index: 1000;
