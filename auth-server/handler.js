@@ -9,7 +9,7 @@ const calendar = google.calendar("v3");
  * https://developers.google.com/identity/protocols/oauth2/scopes
  */
 
-const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly"];
 
 /**
  If you see 'process.env', this means the value is in the 'config.json'file.
@@ -20,7 +20,7 @@ const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
 const redirect_uris = [
-  "https://hamzaTCF.github.io/meet/"
+  "https://hamzatcf.github.io/meet/"
 ];
 
 const oAuth2Client = new google.auth.OAuth2(
