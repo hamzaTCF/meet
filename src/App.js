@@ -6,6 +6,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { InfoAlert, WarningAlert, ErrorAlert } from './components/Alert';
 import CityEventsChart from './components/CityEventsChart';
 import EventGenresChart from './components/EventGenresChart';
+import WelcomeScreen from './components/WelcomeScreen';
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
 
@@ -20,6 +21,7 @@ const App = () => {
   const [infoAlert, setInfoAlert] = useState("");
   const [warningAlert, setWarningAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
 
   useEffect(() => {
     if (navigator.onLine) {
@@ -29,6 +31,21 @@ const App = () => {
     }
     fetchData();
   }, [currentCity, currentNOE]);
+
+  useEffect(() => {
+    if (
+      !showWelcomeScreen ||
+      window.location.href.startsWith("http://localhost")
+    ) {
+      if (navigator.onLine) {
+        setWarningAlert("")
+      } else {
+        setWarningAlert("You are currently offline! Your query has been performed on cached events data")
+      }
+      fetchData();
+    }
+  }, [currentCity, currentNOE, showWelcomeScreen]);
+
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -41,25 +58,29 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Meet App</h1>
-      <div className="alerts-container">
-        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
-        {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
-      </div>
-      <CitySearch
-        allLocations={allLocations}
-        setCurrentCity={setCurrentCity}
-        setInfoAlert={setInfoAlert} />
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
-      <div className="charts-container">
-        <EventGenresChart events={events} />
-        <CityEventsChart allLocations={allLocations} events={events} />
-      </div>
-      <EventList events={events} />
+      {showWelcomeScreen && !window.location.href.startsWith("http://localhost") ?
+        <WelcomeScreen setShowWelcomeScreen={setShowWelcomeScreen} /> :
+        <>
+          <h1>Meet App</h1>
+          <div className="alerts-container">
+            {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+            {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+            {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+          </div>
+          <CitySearch
+            allLocations={allLocations}
+            setCurrentCity={setCurrentCity}
+            setInfoAlert={setInfoAlert} />
+          <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
+          <div className="charts-container">
+            <EventGenresChart events={events} />
+            <CityEventsChart allLocations={allLocations} events={events} />
+          </div>
+          <EventList events={events} />
+        </>
+      }
     </div>
   );
-
 }
 
 export default App;

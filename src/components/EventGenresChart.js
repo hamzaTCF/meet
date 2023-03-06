@@ -21,8 +21,6 @@ const EventGenresChart = ({ events }) => {
     return data;
   }
 
-
-
   const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius;
