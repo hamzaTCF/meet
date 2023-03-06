@@ -6,7 +6,7 @@ class Alert extends Component {
   constructor() {
     super();
     this.color = null;
-    this.bgColor = this.bgColor;
+    this.bgColor = null;
   }
 
   getStyle = () => {
