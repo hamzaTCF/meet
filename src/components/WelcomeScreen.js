@@ -5,14 +5,14 @@ import { Button, Carousel, Modal } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const WelcomeScreen = ({ setShowWelcomeScreen }) => {
-
   const [show, setShow] = useState(false);
-
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
     setShowWelcomeScreen(!code);
-  }, [])
+  }, []);
+
+
   return (
     <div className="WelcomeScreen">
       <h1>Welcome to the Meet app</h1>
@@ -52,8 +52,7 @@ const WelcomeScreen = ({ setShowWelcomeScreen }) => {
           <Carousel.Caption className="carouselCaption">
             <h3>No internet? No problem!</h3>
             <p>
-              Once you have used the app for the first time with internet, events
-              will be cached so that you can view them whenever you want.
+              Events will be cached locally on your computer so that you can view them while offline.
             </p>
           </Carousel.Caption>
         </Carousel.Item>

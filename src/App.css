@@ -112,6 +112,7 @@ input[type="number"] {
 }
 
 /* Welcome Screen Styling - Start */
+
 .WelcomeScreen h1 {
   margin: 30px 0;
   font-weight: bolder;
@@ -171,12 +172,12 @@ input[type="number"] {
 .carouselCaption {
   position: static;
   color: black;
-  max-width: 300px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .carousel-indicators {
-  bottom: 95px;
+  bottom: 102px;
 }
 
 .carousel-indicators button {
@@ -184,7 +185,7 @@ input[type="number"] {
 }
 
 button.getStartedBtn {
-  max-width: 300px;
+  max-width: 500px;
   width: 100%;
 }
 
@@ -208,6 +209,7 @@ button.getStartedBtn {
 
   .carouselCaption p {
     font-size: 0.8em;
+    height: 48px;
   }
 
   .carousel-indicators {

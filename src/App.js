@@ -30,7 +30,7 @@ const App = () => {
       !showWelcomeScreen
     ) {
       if (navigator.onLine) setWarningAlert("");
-      else setWarningAlert("You are currently offline! Your query has been performed on cached events data");
+      else setWarningAlert("You are currently offline! Currently, app is using cached data");
       fetchData();
     }
   }, [currentCity, currentNOE, showWelcomeScreen]);
