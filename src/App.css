@@ -112,6 +112,10 @@ input[type="number"] {
 }
 
 /* Welcome Screen Styling - Start */
+.WelcomeScreen h1 {
+  margin: 30px 0;
+  font-weight: bolder;
+}
 
 .google-btn {
   width: 260px;
@@ -120,7 +124,7 @@ input[type="number"] {
   padding: 0;
   box-shadow: 0px 1px 3px 0px gray;
   cursor: pointer;
-  margin: 20px auto;
+  margin: 100px auto;
   display: block;
 }
 
@@ -146,6 +150,69 @@ input[type="number"] {
 .google-text {
   font-size: 1.25rem;
   font-weight: bolder;
+}
+
+.privacyLink {
+  display: block;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+  box-shadow: 0px 4px 10px 2px grey;
+}
+
+.carouselItem img {
+  max-width: 500px !important;
+  margin: 10px auto;
+}
+.carouselCaption {
+  position: static;
+  color: black;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.carousel-indicators {
+  bottom: 95px;
+}
+
+.carousel-indicators button {
+  background-color: orange !important;
+}
+
+button.getStartedBtn {
+  max-width: 300px;
+  width: 100%;
+}
+
+@media (max-width: 534px) {
+  .WelcomeScreen h1 {
+    margin: 10px 0;
+    font-size: 1.5em;
+  }
+
+  .carouselItem img {
+    margin: 0px auto;
+  }
+
+  .carouselCaption {
+    padding: 10px 0;
+  }
+
+  .carouselCaption h3 {
+    font-size: 1.2em;
+  }
+
+  .carouselCaption p {
+    font-size: 0.8em;
+  }
+
+  .carousel-indicators {
+    position: static;
+  }
 }
 
 /* Welcome Screen Styling - End */

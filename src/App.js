@@ -24,28 +24,16 @@ const App = () => {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
 
   useEffect(() => {
-    if (navigator.onLine) {
-      setWarningAlert("")
-    } else {
-      setWarningAlert("You are currently offline! Your query has been performed on cached events data")
-    }
-    fetchData();
-  }, [currentCity, currentNOE]);
-
-  useEffect(() => {
     if (
-      !showWelcomeScreen ||
-      window.location.href.startsWith("http://localhost")
+      window.location.href.startsWith("http://localhost") ||
+      !navigator.onLine ||
+      !showWelcomeScreen
     ) {
-      if (navigator.onLine) {
-        setWarningAlert("")
-      } else {
-        setWarningAlert("You are currently offline! Your query has been performed on cached events data")
-      }
+      if (navigator.onLine) setWarningAlert("");
+      else setWarningAlert("You are currently offline! Your query has been performed on cached events data");
       fetchData();
     }
   }, [currentCity, currentNOE, showWelcomeScreen]);
-
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -58,7 +46,11 @@ const App = () => {
 
   return (
     <div className="App">
-      {showWelcomeScreen && !window.location.href.startsWith("http://localhost") ?
+      {(
+        !window.location.href.startsWith("http://localhost") &&
+        navigator.onLine &&
+        showWelcomeScreen
+      ) ?
         <WelcomeScreen setShowWelcomeScreen={setShowWelcomeScreen} /> :
         <>
           <h1>Meet App</h1>
