@@ -176,6 +176,10 @@ input[type="number"] {
   margin: 0 auto;
 }
 
+.carouselCaption p {
+  height: 48px;
+}
+
 .carousel-indicators {
   bottom: 102px;
 }
@@ -209,7 +213,6 @@ button.getStartedBtn {
 
   .carouselCaption p {
     font-size: 0.8em;
-    height: 48px;
   }
 
   .carousel-indicators {
